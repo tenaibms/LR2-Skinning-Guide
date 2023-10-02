@@ -16,6 +16,7 @@ The following elements will be implemented:
 - Bombs
 - Guage/Lifebar
 - Hit Lighting
+- Lanecover
 - Judgements & Combo
 - Judgeline
 - Lasers
@@ -48,6 +49,7 @@ It is also a good idea to create directories for all of your customization optio
         │   ├── 📁bombs/
         │   ├── 📁guage/
         │   ├── 📁lasers/
+        │   ├── 📁lanecover/
         │   ├── 📁notes/
         │   ├── 📁judgeline/
         │   ├── 📁judgements/
@@ -57,6 +59,9 @@ It is also a good idea to create directories for all of your customization optio
 # Creating the .lr2skin file
 
 Inside of our `.lr2skin` file, we will use the [`#INFORMATION`]({{ site.baseurl }}{% link docs/commands/information.md %}) command to include some general metadata, as well as define options for customizing the skin.
+
+{: .warning }
+All paths should use backslashes `\` rather than forward slashes! Forward slashes can cause weird errors and unexpected behavior!
 
 **barebones.lr2skin**
 ```
@@ -105,6 +110,7 @@ Your file structure should look like this
         ├── 📁img/
         │   ├── 📁bombs/
         │   ├── 📁guage/
+        │   ├── 📁lanecover/
         │   ├── 📁lasers/
         │   ├── 📁notes/
         │   │   └── 🖼️default.png
@@ -129,14 +135,14 @@ We'll start by sourcing our normal notes.
 //Notes										
 //Normal Notes										
 //SRC_NOTE	index	gr	x	y	w	h	div_x	div_y	cycle	timer
-#SRC_NOTE	0	0	0	56	30	6	1	1	0	0
-#SRC_NOTE	1	0	31	56	17	6	1	1	0	0
-#SRC_NOTE	2	0	49	56	13	6	1	1	0	0
-#SRC_NOTE	3	0	31	56	17	6	1	1	0	0
-#SRC_NOTE	4	0	49	56	13	6	1	1	0	0
-#SRC_NOTE	5	0	31	56	17	6	1	1	0	0
-#SRC_NOTE	6	0	49	56	13	6	1	1	0	0
-#SRC_NOTE	7	0	31	56	17	6	1	1	0	0
+#SRC_NOTE	0	0	0	49	30	13	1	1	0	0
+#SRC_NOTE	1	0	31	49	17	13	1	1	0	0
+#SRC_NOTE	2	0	49	49	13	13	1	1	0	0
+#SRC_NOTE	3	0	31	49	17	13	1	1	0	0
+#SRC_NOTE	4	0	49	49	13	13	1	1	0	0
+#SRC_NOTE	5	0	31	49	17	13	1	1	0	0
+#SRC_NOTE	6	0	49	49	13	13	1	1	0	0
+#SRC_NOTE	7	0	31	49	17	13	1	1	0	0
 ```
 ![Annoted Notes](assets/barebones2.png)
 
@@ -212,14 +218,49 @@ After that, we will go ahead and define the positions our notes are drawn at
 ```
 // Note Positions																				
 //DST_NOTE	index	time	x	y	w	h	acc	a	r	g	b	blend	filter	angle	center	loop	timer	op1	op2	op3
-#DST_NOTE	0	0	100	400	30	6	0	255	255	255	255	0	0	0	0	0	0	0	0	0
-#DST_NOTE	1	0	130	400	17	6	0	255	255	255	255	0	0	0	0	0	0	0	0	0
-#DST_NOTE	2	0	147	400	13	6	0	255	255	255	255	0	0	0	0	0	0	0	0	0
-#DST_NOTE	3	0	160	400	17	6	0	255	255	255	255	0	0	0	0	0	0	0	0	0
-#DST_NOTE	4	0	177	400	13	6	0	255	255	255	255	0	0	0	0	0	0	0	0	0
-#DST_NOTE	5	0	190	400	17	6	0	255	255	255	255	0	0	0	0	0	0	0	0	0
-#DST_NOTE	6	0	207	400	13	6	0	255	255	255	255	0	0	0	0	0	0	0	0	0
-#DST_NOTE	7	0	220	400	17	6	0	255	255	255	255	0	0	0	0	0	0	0	0	0
+#DST_NOTE	0	0	100	350	30	13	0	255	255	255	255	0	0	0	0	0	0	0	0	0
+#DST_NOTE	1	0	130	350	17	13	0	255	255	255	255	0	0	0	0	0	0	0	0	0
+#DST_NOTE	2	0	147	350	13	13	0	255	255	255	255	0	0	0	0	0	0	0	0	0
+#DST_NOTE	3	0	160	350	17	13	0	255	255	255	255	0	0	0	0	0	0	0	0	0
+#DST_NOTE	4	0	177	350	13	13	0	255	255	255	255	0	0	0	0	0	0	0	0	0
+#DST_NOTE	5	0	190	350	17	13	0	255	255	255	255	0	0	0	0	0	0	0	0	0
+#DST_NOTE	6	0	207	350	13	13	0	255	255	255	255	0	0	0	0	0	0	0	0	0
+#DST_NOTE	7	0	220	350	17	13	0	255	255	255	255	0	0	0	0	0	0	0	0	0
 ```
 We now have notes drawn to the screen!
 ![Notes Drawn](assets/barebones4.png)
+
+# Judgeline
+The process of creating a judgeline is much simpler. First, we will create a customizable option for the judgeline in our `.lr2skin` file.
+
+## **`barebones.lr2skin`**
+
+```
+#CUSTOMFILE,Judgeline,LR2Files/Theme/barebones/img/judgeline/*.png,red
+```
+Then, we will create our image texture
+##### (we will use a 1x1 color for our texture, but any size works)
+Lastly we will will add our image definition to our `1p.csv` file, and we will also include the judgeline definition.
+
+## **`csv\1p.csv`**
+```
+#IMAGE	LR2Files\Theme\barebones\img\notes\*.png	//1
+
+[...]
+
+//Judgeline
+//SRC_JUDGELINE	(NULL)	gr	x	y	w	h	div_x	div_y	cycle	timer
+#SRC_JUDGELINE	0	1	0	0	1	1	1	1	0	0
+//DST_JUDGELINE	(NULL)	time	x	y	w	h	acc	a	r	g	b	blend	filter	angle	center	loop	timer	op1	op2	op3
+#DST_JUDGELINE	0	0	100	357	137	6	0	255	255	255	255	0	0	0	0	0	0	0	0	0
+
+[...]
+```
+
+The judgeline definition should come **before** the note definition. To find the correct `xywh` values for the judgeline:
+- The `x` should be the same as the first `#DST_NOTE`.
+- The `y` should be the same as `#DST_NOTE y + (#DST_NOTE h/2 (round up))`.
+- The `w` should be the sum of all `DSTNOTE w`.
+- The `h` should be the same as the height of the note texture (our note texture is 6 pixels tall, so our height is 6 pixels).
+
+After including those definitions, the screen should look something like this.![Judgeline](assets/barebones5.png)
