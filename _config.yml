@@ -1,8 +1,24 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: LR2 Skinning
+description: This website is intended for English speakers to learn LR2 skinning. This will include both translations of existing material and original articles. 
 theme: just-the-docs
 
 url: https://just-the-docs.github.io
 
+#markdown: kramdown
+highlighter: rouge
+
+port: 8092
+
 aux_links:
   Template Repository: https://github.com/just-the-docs/just-the-docs-template
+
+plugins:
+  - jekyll-spaceship
+
+callouts:
+  note:
+    title: Note
+    color: purple
+  img:
+    color: yellow
+
