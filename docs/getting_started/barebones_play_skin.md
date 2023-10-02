@@ -28,32 +28,32 @@ A preview of the skin can be located below:
 
 Firstly, create a folder inside of `LR2Files\Theme\`. We will call our skin Barebones, so we should create the folder `LR2Files\Theme\barebones\`. 
 ```
-📁LR2Files/
-└── 📁Themes/
-    └── 📁barebones/
+📁LR2File\
+└── 📁Theme\
+    └── 📁barebone\
 ```
 Secondly we need to create a file inside of that folder with the `.lr2skin` extension. This extension is what LR2 looks for when searching the Themes directory. We will call ours `barebones.lr2skin`, though the name doesn't have to match the directory name. 
 ```
-📁LR2Files/
-└── 📁Themes/
-    └── 📁barebones/
+📁LR2File\
+└── 📁Theme\
+    └── 📁barebone\
         └── 📝barebones.lr2skin
 ```
 It is also a good idea to create directories for all of your customization options. Doing so allows you to much more easily manage each part of your skin.
 ```
-📁LR2Files/
-└── 📁Themes/
-    └── 📁barebones/
-        ├── 📁csv/
-        ├── 📁img/
-        │   ├── 📁bombs/
-        │   ├── 📁guage/
-        │   ├── 📁lasers/
-        │   ├── 📁lanecover/
-        │   ├── 📁notes/
-        │   ├── 📁judgeline/
-        │   ├── 📁judgements/
-        │   └── 📁lighting/
+📁LR2File\
+└── 📁Theme\
+    └── 📁barebone\
+        ├── 📁cs\
+        ├── 📁im\
+        │   ├── 📁bomb\
+        │   ├── 📁guag\
+        │   ├── 📁laser\
+        │   ├── 📁lanecove\
+        │   ├── 📁note\
+        │   ├── 📁judgelin\
+        │   ├── 📁judgement\
+        │   └── 📁lightin\
         └── 📝barebones.lr2skin
 ```
 # Creating the .lr2skin file
@@ -102,21 +102,21 @@ Additionally, it would be prudent to create the csv files and textures.
 
 Your file structure should look like this
 ```
-📁LR2Files/
-└── 📁Themes/
-    └── 📁barebones/
-        ├── 📁csv/
+📁LR2File\
+└── 📁Theme\
+    └── 📁barebone\
+        ├── 📁cs\
             ├── 📝1p.csv
-        ├── 📁img/
-        │   ├── 📁bombs/
-        │   ├── 📁guage/
-        │   ├── 📁lanecover/
-        │   ├── 📁lasers/
-        │   ├── 📁notes/
+        ├── 📁im\
+        │   ├── 📁bomb\
+        │   ├── 📁guag\
+        │   ├── 📁lanecove\
+        │   ├── 📁laser\
+        │   ├── 📁note\
         │   │   └── 🖼️default.png
-        │   ├── 📁judgeline/
-        │   ├── 📁judgements/
-        │   └── 📁lighting/
+        │   ├── 📁judgelin\
+        │   ├── 📁judgement\
+        │   └── 📁lightin\
         └── 📝barebones.lr2skin
 ```
 
@@ -237,7 +237,7 @@ The process of creating a judgeline is much simpler. First, we will create a cus
 ## **`barebones.lr2skin`**
 
 ```
-#CUSTOMFILE,Judgeline,LR2Files/Theme/barebones/img/judgeline/*.png,red
+#CUSTOMFILE,Judgeline,LR2File\Them\barebone\im\judgelin\*.png,red
 ```
 Then, we will create our image texture
 ##### (we will use a 1x1 color for our texture, but any size works)
