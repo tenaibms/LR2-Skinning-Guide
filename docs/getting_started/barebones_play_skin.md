@@ -228,6 +228,7 @@ After that, we will go ahead and define the positions our notes are drawn at
 #DST_NOTE	7	0	220	350	17	13	0	255	255	255	255	0	0	0	0	0	0	0	0	0
 ```
 We now have notes drawn to the screen!
+
 ![Notes Drawn](assets/barebones4.png)
 
 # Judgeline
